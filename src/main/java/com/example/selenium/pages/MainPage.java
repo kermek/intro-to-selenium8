@@ -2,21 +2,28 @@ package com.example.selenium.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 public class MainPage extends BasePage {
-    private By title = By.cssSelector("h2");
-    private By logout = By.cssSelector(".icon-2x");
+
+    @FindBy(how = How.CSS, using = "h2")
+    private WebElement title;
+
+    @FindBy(how = How.CSS, using = ".icon-2x")
+    private WebElement logout;
 
     public MainPage(WebDriver driver) {
         super(driver);
     }
 
     public String getTitle() {
-        return driver.findElement(title).getText();
+        return title.getText();
     }
 
     public MainPage clickLogout() {
-        driver.findElement(logout).click();
+        logout.click();
         return this;
     }
 }
